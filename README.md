@@ -1,5 +1,7 @@
 # Projeto 2 curso React.js da Udemy: Mini-Blog
 
+### :construction: **EM ANDAMENTO** :construction: 
+
 ## Libs:
 - npm i firebase
 - npm i react-router-dom
