@@ -2,5 +2,6 @@
 
 ## Libs:
 - npm i firebase
+- npm i react-router-dom
 
 `npm install` para instalar as dependências e `npm start` para inicializar o projeto
