@@ -2,7 +2,10 @@
 import styles from './Register.module.css'
 
 // Libs
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useAuthentication } from '../../hooks/useAuthentication'
+
+
 
 const Register = () => {
 
@@ -13,7 +16,9 @@ const Register = () => {
 
     const [error, setError] = useState('')
 
-    const handleSubmit = (e) => {
+    const { createUser, error: authError, loading } = useAuthentication()
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         setError('')
@@ -24,13 +29,21 @@ const Register = () => {
             password
         }
 
-        if(password !== confirmPassword){
+        if (password !== confirmPassword) {
             setError('As senhas precisam ser iguais!')
             return
         }
 
-        console.log(user)
+        const res = await createUser(user)
+        console.log(res)
     }
+
+    useEffect(() => {
+        if (authError) {
+            setError(authError)
+        }
+
+    }, [authError])
 
     return (
         <div className={styles.register}>
@@ -77,7 +90,11 @@ const Register = () => {
                         onChange={e => setConfirmPassword(e.target.value)}
                         required />
                 </label>
-                <button className='btn'>Cadastrar</button>
+                {!loading ? (
+                    <button className='btn'>Cadastrar</button>
+                ) : (
+                    <button className='btn' disabled >Aguarde...</button>
+                )}
                 {error && <p className='error'>{error}</p>}
             </form>
         </div>
