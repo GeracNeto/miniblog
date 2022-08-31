@@ -7,8 +7,6 @@ import { useEffect, useState } from 'react'
 // Hooks
 import { useAuthentication } from '../../hooks/useAuthentication'
 
-
-
 const Register = () => {
 
     const [displayName, setDisplayName] = useState('')
