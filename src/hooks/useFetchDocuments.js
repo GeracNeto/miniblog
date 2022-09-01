@@ -5,9 +5,8 @@ import {
     collection,
     query,
     orderBy,
-    onSnapShot,
-    where,
-    QuerySnapshot,
+    onSnapshot,
+    QuerySnapshot
 } from 'firebase/firestore'
 import { async } from '@firebase/util'
 
@@ -35,7 +34,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
                 q = await query(collectionRef, orderBy("createdAt", "desc"))
 
-                await onSnapShot(q, (QuerySnapshot) => {
+                await onSnapshot(q, (QuerySnapshot) => {
                     setDocuments(
                         QuerySnapshot.docs.map(doc => ({
                             id: doc.id,
