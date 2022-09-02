@@ -9,6 +9,7 @@ import { useAuthValue } from '../../context/AuthContext'
 
 // Hooks
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
+import { useDeleteDocument } from '../../hooks/useDeleteDocument'
 
 const Dashboard = () => {
 
@@ -18,12 +19,8 @@ const Dashboard = () => {
     // Posts do usuário
     const { documents: posts, loading } = useFetchDocuments("posts", null, uid)
 
-    const deleteDocument = (id) => {
+    const {deleteDocument} = useDeleteDocument("posts")
 
-        if (loading) {
-            return <p>Carregando...</p>
-        }
-    }
 
     return (
         <div className={styles.dashboard}>

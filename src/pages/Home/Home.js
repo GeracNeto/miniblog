@@ -43,7 +43,7 @@ const Home = () => {
                 {posts && posts.map(post => (
                     <PostDetail key={post.id} post={post}/>
                 ))}
-                <h1>Posts...</h1>
+                <h1>Ops...</h1>
                 {posts && posts.length === 0 && (
                     <div className={styles.noposts}>
                         <p>Não foram encontrados posts</p>
